@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>Weather</h1>
+  <pre id="out"></pre>
+  <script>
+    const city = "Hanoi";
+
+    fetch("https://wttr.in/Hanoi?format=j1")
+      .then(r => r.json())
+      .then(data => {
+        const curr = data.current_condition[0];
+        document.getElementById("out").textContent =
+          "City: " + city + "\n" +
+          "Temp: " + curr.temp_C + "°C\n" +
+          "Condition: " + curr.weatherDesc[0].value + "\n" +
+          "Humidity: " + curr.humidity + "%";
+      });
+  </script>
+</body>
+</html>
